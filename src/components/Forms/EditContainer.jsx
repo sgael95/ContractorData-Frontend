@@ -10,14 +10,13 @@ const EditContainer = (props) => {
     const item = location.state?.item;
 
     const itemForm = () => {
-        console.log(item)
         switch (itemType){
             case "Houses":
-                return <HouseForm />
+                return <HouseForm item={item}/>
             case "Employees":
-                return <EmployeeForm />
+                return <EmployeeForm item={item} />
             default:
-                return <PaymentForm />
+                return <PaymentForm item={item}/>
         }
     }
 
