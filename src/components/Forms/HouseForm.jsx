@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { HashRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const HouseForm = (props) => {
     const [house, setHouse] = useState({
@@ -7,16 +7,36 @@ const HouseForm = (props) => {
         "address": "",
         "size": 0,
         "amount paid": 0
-    })
+    });
 
     useEffect(() => {
-        console.log(props.item)
-        setHouse(props.item);
-        console.log(house);
-    }, []);
+        const { item } = props;
+        setHouse(state => ({
+            ...state,
+            "id": item.id,
+            "address": item.address,
+            "size": item.size,
+            "amount paid" : item["amount paid"]
+        }));
+    }, [props.item]);
 
     const submitForm = () => {
+        if(!house){
+            return;
+        }
 
+        const requestOptions = {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(house)
+        }
+
+        fetch(`http://localhost:8080/api/v1/house/${house.id}`, requestOptions)
+            .then(res => res.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch(console.log);
     }
 
     const handleChange = event => {
@@ -65,6 +85,14 @@ const HouseForm = (props) => {
                             value={house["amount paid"]}
                             onChange={handleChange} />
                     </div>
+                </div>
+                <div className="row justify-content-end">
+                    <Link
+                        to="/houses"
+                        className="btn btn-secondary w-25"
+                        onClick={submitForm}>
+                            Submit
+                    </Link>
                 </div>
             </form>
         </div>

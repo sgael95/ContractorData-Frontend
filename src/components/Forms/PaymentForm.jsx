@@ -41,7 +41,6 @@ const PaymentForm = (props) => {
     }
 
     const handleChange = event => {
-        
         const { name, value } = event.target;
         setPayment(prevState => ({
                 ...prevState,
