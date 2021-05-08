@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const EmployeeForm = (props) => {
     const [employee, setEmployee] = useState({
+        "id": "",
         "firstName": "",
         "lastName": "",
         "address": "",
@@ -9,12 +11,34 @@ const EmployeeForm = (props) => {
     });
 
     useEffect(() => {
-        setEmployee(props.item);
-        console.log(employee);
-    }, []);
+        const { item } = props;
+        setEmployee(state => ({
+            ...state,
+            "id": item.id,
+            "firstName": item.firstName,
+            "lastName": item.lastName,
+            "address": item.address,
+            "phoneNumber": item.phoneNumber
+        }));
+    }, [props.item]);
 
     const submitForm = () => {
-        
+        if(!employee){
+            return;
+        }
+
+        const requestOptions = {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(employee)
+        }
+
+        fetch(`http://localhost:8080/api/v1/employee/${employee.id}`, requestOptions)
+            .then(res => res.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch(console.log);
     }
 
     const handleChange = event => {
@@ -75,6 +99,14 @@ const EmployeeForm = (props) => {
                             value={employee.phoneNumber}
                             onChange={handleChange} />
                     </div>
+                </div>
+                <div className="row justify-content-end">
+                    <Link
+                        to="/employees"
+                        className="btn btn-secondary w-25"
+                        onClick={submitForm}>
+                            Submit
+                        </Link>
                 </div>
             </form>
         </div>
