@@ -26,7 +26,6 @@ const EmployeeForm = (props) => {
         if(!employee){
             return;
         }
-
         const requestOptions = {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
