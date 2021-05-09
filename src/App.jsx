@@ -13,6 +13,7 @@ import EditContainer from './components/Forms/EditContainer';
 import SelectEmployee from './components/Forms/AddItemForms/SelectEmployee';
 import SelectHouse from './components/Forms/AddItemForms/SelectHouse';
 import AddPayment from './components/Forms/AddItemForms/AddPayment';
+import AddHouse from "./components/Forms/AddItemForms/AddHouse";
 
 function App() {
   return (
@@ -66,6 +67,9 @@ function App() {
           </Route>
           <Route path="/addPayment">
             <AddPayment />
+          </Route>
+          <Route path="/addHouse">
+            <AddHouse />
           </Route>
         </Switch>
         </div>
