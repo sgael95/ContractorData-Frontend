@@ -33,6 +33,13 @@ const Items = (props) => {
                     role="button"
                     className="btn btn-danger rounded-pill"
                     ><i className="fas fa-plus"></i></Link>);
+            case 'Houses':
+                return(<Link
+                    to="/addHouse"
+                    role="button"
+                    className="btn btn-danger rounded-pill">
+                        <i className="fas fa-plus"></i>
+                    </Link>)
             default:
                 return;
         }
