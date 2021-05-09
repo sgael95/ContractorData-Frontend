@@ -1,15 +1,18 @@
-import './App.css';
-import Employees from './components/Employees';
-import Houses from './components/Houses';
-import Payments from './components/Payments';
-import EditContainer from './components/Forms/EditContainer';
-
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+
+import './App.css';
+import Employees from './components/Employees';
+import Houses from './components/Houses';
+import Payments from './components/Payments';
+import EditContainer from './components/Forms/EditContainer';
+import SelectEmployee from './components/Forms/AddItemForms/SelectEmployee';
+import SelectHouse from './components/Forms/AddItemForms/SelectHouse';
+import AddPayment from './components/Forms/AddItemForms/AddPayment';
 
 function App() {
   return (
@@ -54,6 +57,15 @@ function App() {
           </Route>
           <Route path="/editItem">
             <EditContainer />
+          </Route>
+          <Route path="/selectEmployee">
+            <SelectEmployee />
+          </Route>
+          <Route path="/selectHouse">
+            <SelectHouse />
+          </Route>
+          <Route path="/addPayment">
+            <AddPayment />
           </Route>
         </Switch>
         </div>

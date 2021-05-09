@@ -2,6 +2,7 @@ import { useState } from "react";
 import Popup from './Popup';
 import PayItem from './PayItem';
 import { Link } from "react-router-dom";
+import SelectEmployee from './Forms/AddItemForms/SelectEmployee'
 
 const Items = (props) => {
     const [confirmDelete, setConfirmDelete] = useState(false);
@@ -23,6 +24,20 @@ const Items = (props) => {
         setConfirmDelete(!confirmDelete);
     }
 
+    const routeToAddItem = () => {
+        const { itemType } = props;
+        switch(itemType) {
+            case 'Payments':
+                return(<Link 
+                    to="/selectEmployee" 
+                    role="button"
+                    className="btn btn-danger rounded-pill"
+                    ><i className="fas fa-plus"></i></Link>);
+            default:
+                return;
+        }
+    }
+
     return (
         <div className="container">
             <div className="row justify-content-md-center">
@@ -33,9 +48,7 @@ const Items = (props) => {
             <div className="row justify-content-md-center">
                 <div className="col-md-10">
                     <div className="button-margin float-end">
-                        <button type="button" className="btn btn-danger rounded-pill">
-                            <i className="fas fa-plus"></i>
-                        </button>
+                        {routeToAddItem()}
                     </div>
                 </div>
             </div>
