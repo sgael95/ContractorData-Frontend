@@ -2,7 +2,6 @@ import { useState } from "react";
 import Popup from './Popup';
 import PayItem from './PayItem';
 import { Link } from "react-router-dom";
-import SelectEmployee from './Forms/AddItemForms/SelectEmployee'
 
 const Items = (props) => {
     const [confirmDelete, setConfirmDelete] = useState(false);
@@ -36,6 +35,13 @@ const Items = (props) => {
             case 'Houses':
                 return(<Link
                     to="/addHouse"
+                    role="button"
+                    className="btn btn-danger rounded-pill">
+                        <i className="fas fa-plus"></i>
+                    </Link>)
+            case 'Employees':
+                return(<Link
+                    to="/addEmployee"
                     role="button"
                     className="btn btn-danger rounded-pill">
                         <i className="fas fa-plus"></i>
