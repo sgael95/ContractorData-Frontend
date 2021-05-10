@@ -14,26 +14,12 @@ import SelectEmployee from './components/Forms/AddItemForms/SelectEmployee';
 import SelectHouse from './components/Forms/AddItemForms/SelectHouse';
 import AddPayment from './components/Forms/AddItemForms/AddPayment';
 import AddHouse from "./components/Forms/AddItemForms/AddHouse";
+import AddEmployee from "./components/Forms/AddItemForms/AddEmployee";
 
 function App() {
   return (
     <Router>
       <div className="App">
-        {/*<header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      */}
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
           <div className="navbar-nav">
@@ -70,6 +56,9 @@ function App() {
           </Route>
           <Route path="/addHouse">
             <AddHouse />
+          </Route>
+          <Route path="/addEmployee">
+            <AddEmployee />
           </Route>
         </Switch>
         </div>
