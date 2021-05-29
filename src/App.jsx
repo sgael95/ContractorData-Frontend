@@ -2,10 +2,12 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 import './App.css';
+import Home from './components/Home';
 import Employees from './components/Employees';
 import Houses from './components/Houses';
 import Payments from './components/Payments';
@@ -33,31 +35,34 @@ function App() {
       <div className="container-fluid jumbotron">
 
         <Switch>
-          <Route path="/employees">
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/employees">
             <Employees />
           </Route>
-          <Route path="/houses">
+          <Route exact path="/houses">
             <Houses />
           </Route>
-          <Route path="/payments">
+          <Route exact path="/payments">
             <Payments />
           </Route>
-          <Route path="/editItem">
+          <Route exact path="/editItem">
             <EditContainer />
           </Route>
-          <Route path="/selectEmployee">
+          <Route exact path="/selectEmployee">
             <SelectEmployee />
           </Route>
-          <Route path="/selectHouse">
+          <Route exact path="/selectHouse">
             <SelectHouse />
           </Route>
-          <Route path="/addPayment">
+          <Route exact path="/addPayment">
             <AddPayment />
           </Route>
-          <Route path="/addHouse">
+          <Route exact path="/addHouse">
             <AddHouse />
           </Route>
-          <Route path="/addEmployee">
+          <Route exact path="/addEmployee">
             <AddEmployee />
           </Route>
         </Switch>
